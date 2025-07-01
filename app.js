@@ -2,7 +2,7 @@ var map;
 var geojsonLayer;
 
 async function displayInformation(featureMap){
-    // console.log(featureMap);
+    console.log(featureMap);
     const candidatasResp = await fetch('candidatas.json');
     const candidatas = await candidatasResp.json();
     const candidata = candidatas.find(c => c.municipio.toString().toLowerCase() == featureMap.mun_name.toString().toLowerCase());
@@ -18,9 +18,6 @@ async function displayInformation(featureMap){
                     <img src="${candidata.logo}" width="200px">
                     <span>${candidata.partido}</span>
                 </div>
-                <p>
-                    ${JSON.stringify(featureMap)}
-                </p>
             <div>
         `;
     } else {
@@ -114,6 +111,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Carga el GeoJSON de forma asíncrona
+// fetch('chiapas.geojson')
 fetch('chiapas.geojson')
     .then(response => {
         if (!response.ok) {

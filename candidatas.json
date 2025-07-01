@@ -7,5 +7,23 @@
     "foto":"presidenta.jpg",
     "fill":"#4A1B1B",
     "color":"#FFFFFF"
+  },
+  {
+    "municipio":"pijijiapan",
+    "nombre":"Juana de Arco",
+    "partido": "P.R.I.",
+    "logo":"pri.png",
+    "foto":"presidenta.jpg",
+    "fill":"#00FF00",
+    "color":"#FFFFFF"
+  },
+  {
+    "municipio":"tuxtla gutiérrez",
+    "nombre":"Maria Mercedes",
+    "partido": "P.A.N.",
+    "logo":"pri.png",
+    "foto":"presidenta.jpg",
+    "fill":"#0000FF",
+    "color":"#FFFFFF"
   }
 ]
