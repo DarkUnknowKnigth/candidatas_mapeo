@@ -1,7 +1,6 @@
 var map;
-var geojsonLayer; // Declarada aquí para ser accesible globalmente
+var geojsonLayer;
 
-// Función para mostrar información (tu código existente)
 async function displayInformation(featureMap){
     // console.log(featureMap);
     const candidatasResp = await fetch('candidatas.json');
@@ -37,10 +36,9 @@ async function displayInformation(featureMap){
     }
 }
 
-// Función para obtener el estilo de la capa (tu código existente)
 async function getLayerStyle(municipio){
     let color = "#F5D9E3";
-    let fill = "#ff0000"; // Usar el mismo formato si es un color HTML
+    let fill = "#ff0000";
     const candidatasResp = await fetch('candidatas.json');
     const candidatas = await candidatasResp.json();
     const candidata = candidatas.find(c => c.municipio.toString().toLowerCase() == municipio.toString().toLowerCase());
@@ -52,34 +50,26 @@ async function getLayerStyle(municipio){
 }
 
 
-// Función principal para cada característica GeoJSON
 function onEachFeature(feature, layer) {
-    // *** AQUI VAN bindPopup Y bindTooltip (se ejecutan una sola vez por cada feature) ***
 
     // Configuración del Popup
     if (feature.properties) {
         var popupContent = `<h3>${feature.properties.mun_name}</h3>`;
-        // Solo vincula el popup si 'layer' es un objeto válido y tiene el método
         if (layer && typeof layer.bindPopup === 'function') {
             layer.bindPopup(popupContent);
         }
     }
 
-    // --- AÑADIR TOOLTIP PARA EL NOMBRE DEL MUNICIPIO AL PASAR EL MOUSE ---
-    // Asumiendo que 'nom_mun' es la propiedad que contiene el nombre del municipio
     if (feature.properties && feature.properties.nom_mun) {
         if (layer && typeof layer.bindTooltip === 'function') {
             layer.bindTooltip(feature.properties.nom_mun, {
-                permanent: false, // El tooltip no es permanente, aparece al pasar el mouse
+                permanent: false, 
                 direction: 'center',
-                className: 'my-tooltip-style' // Clase CSS opcional para estilizar el tooltip
+                className: 'tooltip' 
             });
         }
     }
 
-
-    // --- Evento Click ---
-    // Verifica si 'layer' es un objeto válido y puede manejar eventos
     if (layer && typeof layer.on === 'function') {
         layer.on('click', async function (e) {
             L.DomEvent.stopPropagation(e);
@@ -98,20 +88,8 @@ function onEachFeature(feature, layer) {
             } else {
                 console.error("Error: 'layer' es undefined o no tiene el método 'setStyle' al hacer clic.");
             }
-
-            // También verifica geojsonLayer antes de usarlo
-            // if (geojsonLayer && typeof geojsonLayer.resetStyle === 'function' && layer) {
-            //     setTimeout(function() {
-            //         geojsonLayer.resetStyle(layer);
-            //     }, 2000);
-            // } else {
-            //     console.warn("geojsonLayer o layer no están disponibles para resetear el estilo.");
-            // }
         });
-
-        // --- Eventos Mouseover/Mouseout para resaltado (estos SÍ van aquí) ---
         layer.on('mouseover', function(e) {
-            // Estilo de resaltado al pasar el mouse
         });
 
         layer.on('mouseout', function(e) {
@@ -129,10 +107,6 @@ var defaultStyle = {
     opacity: 1,
     fillOpacity: 0.3
 };
-
-// --- Tu código de inicialización del mapa y carga del GeoJSON ---
-
-// Inicializa el mapa (asegúrate de que esto suceda antes de cargar el GeoJSON)
 map = L.map('map').setView([16.5, -92.5], 8);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -140,7 +114,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Carga el GeoJSON de forma asíncrona
-fetch('chiapas.geojson') // Asegúrate de que esta ruta sea correcta y el archivo se llame chiapas.geojson
+fetch('chiapas.geojson')
     .then(response => {
         if (!response.ok) {
             throw new Error('Error al cargar chiapas.geojson: ' + response.statusText);
@@ -148,7 +122,7 @@ fetch('chiapas.geojson') // Asegúrate de que esta ruta sea correcta y el archiv
         return response.json();
     })
     .then(data => {
-        geojsonLayer = L.geoJSON(data, { // Asigna a la variable geojsonLayer declarada arriba
+        geojsonLayer = L.geoJSON(data, { 
             style: defaultStyle,
             onEachFeature: onEachFeature
         }).addTo(map);
@@ -157,8 +131,7 @@ fetch('chiapas.geojson') // Asegúrate de que esta ruta sea correcta y el archiv
             map.fitBounds(geojsonLayer.getBounds());
         } else {
             console.warn("Los límites del GeoJSON no son válidos o están vacíos. No se pudo ajustar el mapa.");
-            // Opcional: centra el mapa en una ubicación predeterminada si el GeoJSON está vacío
-            // map.setView([16.5, -92.5], 8);
+            map.setView([16.5, -92.5], 8);
         }
     })
     .catch(error => console.error('Error durante la carga o procesamiento del GeoJSON:', error));
