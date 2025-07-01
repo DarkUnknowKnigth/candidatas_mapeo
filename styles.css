@@ -1,0 +1,5 @@
+#map { min-height: 90vh; }
+
+@media screen and (min-width:300px){
+    #map { min-height: 70vh; }
+}
