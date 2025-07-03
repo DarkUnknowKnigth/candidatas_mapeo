@@ -1,5 +1,39 @@
-#map { min-height: 90vh; }
+ /* Estilos personalizados para el cuerpo y el mapa */
+        body {
+            font-family: 'Inter', sans-serif; /* Usando Inter como fuente principal */
+            background-color: #f8fafc; /* Fondo gris claro */
+        }
 
-@media screen and (min-width:300px){
-    #map { min-height: 70vh; }
-}
+        /* Asegura que el mapa tenga una altura visible */
+        #map {
+            min-height: 500px; /* Altura mínima para el mapa en pantallas pequeñas */
+            height: 70vh; /* 70% del alto del viewport para pantallas pequeñas */
+        }
+
+        /* Media query para pantallas medianas y grandes */
+        @media (min-width: 768px) {
+            #map {
+                height: 100vh; /* El mapa ocupa el 100% del alto del viewport en pantallas grandes */
+                min-height: auto; /* Restablece la altura mínima */
+            }
+        }
+
+        /* Animación de entrada para la información de la candidata */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Estilo para la lista de propuestas con íconos personalizados */
+        .list-with-icon li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+        .list-with-icon li svg {
+            flex-shrink: 0; /* Evita que el ícono se encoja */
+            margin-right: 0.5rem; /* Espacio entre el ícono y el texto */
+        }

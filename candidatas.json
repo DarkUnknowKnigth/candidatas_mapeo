@@ -1,29 +1,212 @@
 [
   {
-    "municipio":"ocosingo",
-    "nombre":"Maria de todos los Angeles",
+    "id": 1,
+    "municipio": "acala",
+    "nombre": "María Patricia Coello Zapata",
     "partido": "Morena",
-    "logo":"morena.png",
-    "foto":"presidenta.jpg",
-    "fill":"#4A1B1B",
-    "color":"#FFFFFF"
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/maria_patricia_coello.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
   },
   {
-    "municipio":"pijijiapan",
-    "nombre":"Juana de Arco",
-    "partido": "P.R.I.",
-    "logo":"pri.png",
-    "foto":"presidenta.jpg",
-    "fill":"#00FF00",
-    "color":"#FFFFFF"
+    "id": 2,
+    "municipio": "aldama",
+    "nombre": "Catarina Pérez Ruiz",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/catarina_perez_ruiz.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
   },
   {
-    "municipio":"tuxtla gutiérrez",
-    "nombre":"Maria Mercedes",
-    "partido": "P.A.N.",
-    "logo":"pri.png",
-    "foto":"presidenta.jpg",
-    "fill":"#0000FF",
-    "color":"#FFFFFF"
+    "id": 3,
+    "municipio": "amatenango del valle",
+    "nombre": "Julieta Gómez Jiménez",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/julieta_gomez_jimenez.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 4,
+    "municipio": "coapilla",
+    "nombre": "Yadira Pérez Pérez",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/yadira_perez_perez.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 5,
+    "municipio": "el parral",
+    "nombre": "Elvira del Carmen Castañeda Maza",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/elvira_del_carmen_maza.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 6,
+    "municipio": "frontera hidalgo",
+    "nombre": "Juana Elizabeth de la Cruz Mazariegos",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/juana_elizabeth_de_la_cruz.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 7,
+    "municipio": "huitiupán",
+    "nombre": "Amalia del Carmen Ochoa Ramos",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/amalia_del_carmen_ochoa.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 8,
+    "municipio": "ixhuatán",
+    "nombre": "María Guadalupe López Camacho",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/maria_guadalupe_camacho.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 9,
+    "municipio": "jiquipilas",
+    "nombre": "Blanca Yaneth Chiu López",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/blanca_chiu_Lopez.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 10,
+    "municipio": "mazatán",
+    "nombre": "Sara Barrera Solís",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/sara_barrera_solis.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 11,
+    "municipio": "mitontic",
+    "nombre": "María Velázquez Ortiz",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/maria_velazquez_ortiz.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 12,
+    "municipio": "montecristo de guerrero",
+    "nombre": "María Aurora Santeliz Sánchez",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/maria_aurora_sanchez.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 13,
+    "municipio": "ocosingo",
+    "nombre": "Manuela Angélica Méndez Cruz",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/manuela_angelica_cruz.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 14,
+    "municipio": "rincón chamula san pedro",
+    "nombre": "María de la Luz Hernández Pérez",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/maria_de_la_luz_hernandez_perez.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 15,
+    "municipio": "san cristóbal de las casas",
+    "nombre": "Fabiola Ricci Diestel",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/fabiola_ricci.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 16,
+    "municipio": "san lucas",
+    "nombre": "Guadalupe Guzmán Villarreal",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/guadalupe_guzman_villarreal.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 17,
+    "municipio": "siltepec",
+    "nombre": "Leydi Yesenia Salas Mérida",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/leydi_yesenia_merida.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 18,
+    "municipio": "sitalá",
+    "nombre": "Guadalupe Deara López",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/guadalupe_deara_lopez.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 19,
+    "municipio": "tumbalá",
+    "nombre": "Griselda de Jesús Méndez",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/griselda_de_jesus_mendez.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 20,
+    "municipio": "tuzantán",
+    "nombre": "Grissel Vázquez Zambrano",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/grissel_vazquez_zambrano.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": 21,
+    "municipio": "villa flores",
+    "nombre": "Valeria Rosales Sarmiento",
+    "partido": "Morena",
+    "logo": "img/partidos/morena.png",
+    "foto": "img/profile/valeria_rosales_sarmiento.jpeg",
+    "fill": "#4A1B1B",
+    "color": "#FFFFFF"
   }
 ]

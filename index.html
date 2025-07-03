@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa Interactivo de Chiapas</title>
-    <!-- Enlace al archivo CSS para los estilos -->
     <link rel="stylesheet" href="styles.css">
-    <!-- Carga la librería D3.js desde un CDN para manipular el SVG y los datos geográficos -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
@@ -17,15 +15,22 @@
 
 </head>
 <body class="w-full p-0 m-0">
-    <div class="flex flex-col md:flex-row w-full">
-        <div id="map" class="w-full"></div>
-        <div class="flex flex-col gap-5 w-full">
-            <h1 class="p-4 bg-pink-300 font-bold text-center">Candidatas de chiapas</h1>
-            <div class="flex flex-col" id="information">
+    <div class="flex flex-col md:flex-row w-full min-h-screen">
+        <div id="map" class="w-full md:w-1/2 lg:w-3/5 border-r border-gray-200 shadow-lg z-0 rounded-tr-lg rounded-br-lg"></div>
+        <div class="flex flex-col gap-5 w-full md:w-1/2 lg:w-2/5 p-6 bg-white overflow-y-auto max-h-screen relative z-10 rounded-tl-lg rounded-bl-lg">
+            <!-- Título principal -->
+            <h1 class="p-4 bg-gradient-to-r from-pink-400 to-pink-600 font-extrabold text-center text-white text-3xl rounded-lg shadow-xl mb-4 tracking-wide">
+                Presidentas Municipales de Chiapas
+            </h1>
+            <!-- Contenedor para la información dinámica de la candidata -->
+            <div class="flex flex-col gap-6" id="information">
+                <!-- Mensaje inicial antes de que se seleccione una candidata -->
+                <div class="text-center text-gray-500 text-lg py-10">
+                    Selecciona un marcador en el mapa para ver la información detallada de la candidata.
+                </div>
             </div>
         </div>
     </div>
-    <!-- Enlace al archivo JavaScript para la lógica del mapa -->
     <script src="app.js"></script>
 </body>
 </html>

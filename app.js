@@ -2,23 +2,21 @@ var map;
 var geojsonLayer;
 
 async function displayInformation(featureMap){
-    console.log(featureMap);
     const candidatasResp = await fetch('candidatas.json');
     const candidatas = await candidatasResp.json();
     const candidata = candidatas.find(c => c.municipio.toString().toLowerCase() == featureMap.mun_name.toString().toLowerCase());
-    const informationDiv = document.querySelector('#information'); // Asegúrate de tener un div con id="information" en tu HTML
+    const informationDiv = document.querySelector('#information'); 
     if (candidata) {
         informationDiv.innerHTML = `
-            <div class="p-4 shadow-lg rounded-lg">
-                <img class="mx-auto" width="200px" src="${candidata.foto}">
-                <h2>${candidata.nombre}</h2>
-                <hr>
-                <h3>${featureMap.mun_name}</h3>
-                <div class="flex flex-row gap-4">
-                    <img src="${candidata.logo}" width="200px">
+            <div class="bg-white p-6 rounded-lg shadow-xl border border-gray-100 flex flex-col items-center text-center animate-fade-in">
+                <img src="${candidata.foto}" alt="Foto de ${candidata.nombre}" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-pink-400 shadow-md">
+                <h4 class="text-2xl font-extrabold text-gray-800 mb-2">${candidata.nombre}</h4>
+                <p class="text-lg text-gray-600 mb-4">Candidata por: <span class="font-bold">${featureMap.mun_name}</span></p>
+                <p class="text-xl text-pink-600 font-semibold mb-2 flex flex-row gap-5 justify-around items-center w-full py-2 px-3 rounded-lg" style="color:${candidata.color};background-color:${candidata.fill}">
+                    <img class="rounded-full border border-gray-900" src="${candidata.logo}" width="50px">    
                     <span>${candidata.partido}</span>
-                </div>
-            <div>
+                </p>
+            </div>
         `;
     } else {
         informationDiv.innerHTML = `
@@ -34,8 +32,8 @@ async function displayInformation(featureMap){
 }
 
 async function getLayerStyle(municipio){
-    let color = "#F5D9E3";
-    let fill = "#ff0000";
+    let color = "#FFFFFF";
+    let fill = "#FDA5D5";
     const candidatasResp = await fetch('candidatas.json');
     const candidatas = await candidatasResp.json();
     const candidata = candidatas.find(c => c.municipio.toString().toLowerCase() == municipio.toString().toLowerCase());
@@ -45,13 +43,33 @@ async function getLayerStyle(municipio){
     }
     return {color,fill};
 }
+async function getCandidata(municipio){
+    let candidata = null;
+    const candidatasResp = await fetch('candidatas.json');
+    const candidatas = await candidatasResp.json();
+    const candidataFounded = candidatas.find(c => c.municipio.toString().toLowerCase() == municipio.toString().toLowerCase());
+    if(candidataFounded){
+        candidata = candidataFounded;
+    }
+    return candidata;
+}
 
 
-function onEachFeature(feature, layer) {
+async function onEachFeature(feature, layer) {
 
     // Configuración del Popup
     if (feature.properties) {
-        var popupContent = `<h3>${feature.properties.mun_name}</h3>`;
+        const candidata = await getCandidata(feature.properties.mun_name);
+        let popupContent =  `<h3>${feature.properties.mun_name}</h3>`
+        if (candidata) {
+            
+            popupContent = `
+                <div class="text-center flex flex-col">
+                    <h3 class="font-bold flex flex-row px-4 gap-2 justify-between items-center text-pink-600"><img src="${candidata.logo}" width="50px" class="border border-gray-900 rounded-lg"> ${candidata.nombre}</h3>
+                    <p>Candidata por el partido <b>${candidata.partido}</b> del municipio <b>${feature.properties.mun_name}</b></p>
+                </div>
+            `;
+        }
         if (layer && typeof layer.bindPopup === 'function') {
             layer.bindPopup(popupContent);
         }
@@ -72,21 +90,30 @@ function onEachFeature(feature, layer) {
             L.DomEvent.stopPropagation(e);
             await displayInformation(feature.properties);
             const {color, fill} = await getLayerStyle(feature.properties.mun_name);
-
-            // *** ¡CORRECCIÓN AQUÍ! DEBE SER 'layer.setStyle' NO 'L.layer.setStyle' ***
             if (layer && typeof layer.setStyle === 'function') {
                 layer.setStyle({
                     fillColor: fill.toString(),
                     color: color.toString(),
-                    weight: 5,
-                    opacity: 1,
+                    weight: 0.5,
+                    opacity: 0.9,
                     fillOpacity: 0.7
                 });
             } else {
                 console.error("Error: 'layer' es undefined o no tiene el método 'setStyle' al hacer clic.");
             }
         });
-        layer.on('mouseover', function(e) {
+        layer.on('mouseover', async function(e) {
+            L.DomEvent.stopPropagation(e);
+            const {color, fill} = await getLayerStyle(feature.properties.mun_name);
+            if (layer && typeof layer.setStyle === 'function') {
+                layer.setStyle({
+                    fillColor: fill.toString(),
+                    color: color.toString(),
+                    weight: 0.5,
+                    opacity: 0.9,
+                    fillOpacity: 0.7
+                });
+            } 
         });
 
         layer.on('mouseout', function(e) {
@@ -99,9 +126,9 @@ function onEachFeature(feature, layer) {
 // Estilo por defecto para las áreas de Chiapas
 var defaultStyle = {
     fillColor: '#FDA5D5',
-    color: '#000000',
-    weight: 1,
-    opacity: 1,
+    color: '#F00000',
+    weight: 0.5,
+    opacity: 0.9,
     fillOpacity: 0.3
 };
 map = L.map('map').setView([16.5, -92.5], 8);
@@ -111,7 +138,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Carga el GeoJSON de forma asíncrona
-// fetch('chiapas.geojson')
 fetch('chiapas.geojson')
     .then(response => {
         if (!response.ok) {
@@ -119,7 +145,11 @@ fetch('chiapas.geojson')
         }
         return response.json();
     })
-    .then(data => {
+    .then(async data => {
+        const candidatasResp = await fetch('candidatas.json');
+        let candidatas = await candidatasResp.json();
+        candidatas = candidatas.map(c => c.municipio.toString().toLowerCase()); 
+        data.features = data.features.filter(d => candidatas.includes(d.properties.mun_name.toString().toLowerCase())); 
         geojsonLayer = L.geoJSON(data, { 
             style: defaultStyle,
             onEachFeature: onEachFeature
