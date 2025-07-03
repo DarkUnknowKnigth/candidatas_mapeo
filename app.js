@@ -1,6 +1,5 @@
 var map;
 var geojsonLayer;
-
 async function displayInformation(featureMap){
     const candidatasResp = await fetch('candidatas.json');
     const candidatas = await candidatasResp.json();
@@ -134,32 +133,38 @@ var defaultStyle = {
 map = L.map('map').setView([16.5, -92.5], 8);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-<a href="https://darkunknowknigth.github.io/">ParachicoSoftware</a>'
 }).addTo(map);
-
-// Carga el GeoJSON de forma asíncrona
-fetch('chiapas.geojson')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Error al cargar chiapas.geojson: ' + response.statusText);
-        }
-        return response.json();
-    })
-    .then(async data => {
-        const candidatasResp = await fetch('candidatas.json');
-        let candidatas = await candidatasResp.json();
-        candidatas = candidatas.map(c => c.municipio.toString().toLowerCase()); 
-        data.features = data.features.filter(d => candidatas.includes(d.properties.mun_name.toString().toLowerCase())); 
-        geojsonLayer = L.geoJSON(data, { 
-            style: defaultStyle,
-            onEachFeature: onEachFeature
-        }).addTo(map);
-
-        if (geojsonLayer.getBounds().isValid()) {
-            map.fitBounds(geojsonLayer.getBounds());
-        } else {
-            console.warn("Los límites del GeoJSON no son válidos o están vacíos. No se pudo ajustar el mapa.");
-            map.setView([16.5, -92.5], 8);
-        }
-    })
-    .catch(error => console.error('Error durante la carga o procesamiento del GeoJSON:', error));
+const _ = "REBueU00c3Qzci4";
+fetch('app.json').then(r => r.json()).then( d => {
+    console.log(d);
+    const _L = btoa(d.licence.secret) == _;
+    console.log(_L);
+    if(true){
+        fetch('chiapas.geojson')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al cargar chiapas.geojson: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(async data => {
+                const candidatasResp = await fetch('candidatas.json');
+                let candidatas = await candidatasResp.json();
+                candidatas = candidatas.map(c => c.municipio.toString().toLowerCase()); 
+                data.features = data.features.filter(d => candidatas.includes(d.properties.mun_name.toString().toLowerCase())); 
+                geojsonLayer = L.geoJSON(data, { 
+                    style: defaultStyle,
+                    onEachFeature: onEachFeature
+                }).addTo(map);
+        
+                if (geojsonLayer.getBounds().isValid()) {
+                    map.fitBounds(geojsonLayer.getBounds());
+                } else {
+                    console.warn("Los límites del GeoJSON no son válidos o están vacíos. No se pudo ajustar el mapa.");
+                    map.setView([16.5, -92.5], 8);
+                }
+            })
+            .catch(error => console.error('Error durante la carga o procesamiento del GeoJSON:', error));
+    }
+})
