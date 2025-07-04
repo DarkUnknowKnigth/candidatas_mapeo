@@ -4,5 +4,9 @@
     "version": "1.0",
     "profile": "https://darkunknowknigth.github.io",
     "secret":"D@nyS3nse1."
+  },
+  "configuration":{
+    "title":"  Presidentas Municipales de Chiapas",
+    "instruction":"Selecciona un marcador en el mapa para ver la información detallada de la candidata."
   }
 }
