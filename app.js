@@ -1,5 +1,6 @@
 var map;
 var geojsonLayer;
+const _ = "REBueVMzbnNlMS4=";
 async function displayInformation(featureMap){
     const candidatasResp = await fetch('candidatas.json');
     const candidatas = await candidatasResp.json();
@@ -10,10 +11,10 @@ async function displayInformation(featureMap){
             <div class="bg-white p-6 rounded-lg shadow-xl border border-gray-100 flex flex-col items-center text-center animate-fade-in">
                 <img src="${candidata.foto}" alt="Foto de ${candidata.nombre}" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-pink-400 shadow-md">
                 <h4 class="text-2xl font-extrabold text-gray-800 mb-2">${candidata.nombre}</h4>
-                <p class="text-lg text-gray-600 mb-4">Candidata por: <span class="font-bold">${featureMap.mun_name}</span></p>
+                <p class="text-lg text-gray-600 mb-4">Presidenta municipal de <span class="font-bold">${featureMap.mun_name}</span></p>
                 <p class="text-xl text-pink-600 font-semibold mb-2 flex flex-row gap-5 justify-around items-center w-full py-2 px-3 rounded-lg" style="color:${candidata.color};background-color:${candidata.fill}">
-                    <img class="rounded-full border border-gray-900" src="${candidata.logo}" width="50px">    
-                    <span>${candidata.partido}</span>
+                    <img class="rounded-lg border border-gray-900" src="${candidata.logo}" width="50px">    
+                    <span>${candidata.partido.toUpperCase()}</span>
                 </p>
             </div>
         `;
@@ -65,7 +66,7 @@ async function onEachFeature(feature, layer) {
             popupContent = `
                 <div class="text-center flex flex-col">
                     <h3 class="font-bold flex flex-row px-4 gap-2 justify-between items-center text-pink-600"><img src="${candidata.logo}" width="50px" class="border border-gray-900 rounded-lg"> ${candidata.nombre}</h3>
-                    <p>Candidata por el partido <b>${candidata.partido}</b> del municipio <b>${feature.properties.mun_name}</b></p>
+                    <p>Candidata por el partido <b>${candidata.partido.toUpperCase()}</b> del municipio <b>${feature.properties.mun_name}</b></p>
                 </div>
             `;
         }
@@ -135,12 +136,10 @@ map = L.map('map').setView([16.5, -92.5], 8);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-<a href="https://darkunknowknigth.github.io/">ParachicoSoftware</a>'
 }).addTo(map);
-const _ = "REBueU00c3Qzci4";
+
 fetch('app.json').then(r => r.json()).then( d => {
-    console.log(d);
     const _L = btoa(d.licence.secret) == _;
-    console.log(_L);
-    if(true){
+    if(_L){
         fetch('chiapas.geojson')
             .then(response => {
                 if (!response.ok) {

@@ -13,11 +13,11 @@
     "id": 2,
     "municipio": "aldama",
     "nombre": "Catarina Pérez Ruiz",
-    "partido": "Morena",
-    "logo": "img/partidos/morena.png",
+    "partido": "Fuerza y Corazón por chiapas",
+    "logo": "img/partidos/fyc.jpg",
     "foto": "img/profile/catarina_perez_ruiz.jpeg",
-    "fill": "#4A1B1B",
-    "color": "#FFFFFF"
+    "fill": "#F6C800",
+    "color": "#1C6FB6"
   },
   {
     "id": 3,
@@ -53,11 +53,11 @@
     "id": 6,
     "municipio": "frontera hidalgo",
     "nombre": "Juana Elizabeth de la Cruz Mazariegos",
-    "partido": "Morena",
-    "logo": "img/partidos/morena.png",
+    "partido": "Redes Sociales Progresistas Chiapas",
+    "logo": "img/partidos/rsp.png",
     "foto": "img/profile/juana_elizabeth_de_la_cruz.jpeg",
-    "fill": "#4A1B1B",
-    "color": "#FFFFFF"
+    "fill": "#C21F37",
+    "color": "#2D3031"
   },
   {
     "id": 7,
@@ -73,8 +73,8 @@
     "id": 8,
     "municipio": "ixhuatán",
     "nombre": "María Guadalupe López Camacho",
-    "partido": "Morena",
-    "logo": "img/partidos/morena.png",
+    "partido": "SEGUIREMOS HACIENDO HISTORIA EN CHIAPAS",
+    "logo": "img/partidos/shh.png",
     "foto": "img/profile/maria_guadalupe_camacho.jpeg",
     "fill": "#4A1B1B",
     "color": "#FFFFFF"
@@ -103,30 +103,30 @@
     "id": 11,
     "municipio": "mitontic",
     "nombre": "María Velázquez Ortiz",
-    "partido": "Morena",
-    "logo": "img/partidos/morena.png",
+    "partido": "Partido Verde Ecologista de México",
+    "logo": "img/partidos/pvem.png",
     "foto": "img/profile/maria_velazquez_ortiz.jpeg",
-    "fill": "#4A1B1B",
+    "fill": "#50B747",
     "color": "#FFFFFF"
   },
   {
     "id": 12,
     "municipio": "montecristo de guerrero",
     "nombre": "María Aurora Santeliz Sánchez",
-    "partido": "Morena",
-    "logo": "img/partidos/morena.png",
+    "partido": "Redes Sociales Progresistas Chiapas",
+    "logo": "img/partidos/rsp.png",
     "foto": "img/profile/maria_aurora_sanchez.jpeg",
-    "fill": "#4A1B1B",
-    "color": "#FFFFFF"
+    "fill": "#C21F37",
+    "color": "#2D3031"
   },
   {
     "id": 13,
     "municipio": "ocosingo",
     "nombre": "Manuela Angélica Méndez Cruz",
-    "partido": "Morena",
-    "logo": "img/partidos/morena.png",
+    "partido": "Partido Verde Ecologista de México",
+    "logo": "img/partidos/pvem.png",
     "foto": "img/profile/manuela_angelica_cruz.jpeg",
-    "fill": "#4A1B1B",
+    "fill": "#50B747",
     "color": "#FFFFFF"
   },
   {
@@ -153,10 +153,10 @@
     "id": 16,
     "municipio": "san lucas",
     "nombre": "Guadalupe Guzmán Villarreal",
-    "partido": "Morena",
-    "logo": "img/partidos/morena.png",
+    "partido": "Partido Verde Ecologista de México",
+    "logo": "img/partidos/pvem.png",
     "foto": "img/profile/guadalupe_guzman_villarreal.jpeg",
-    "fill": "#4A1B1B",
+    "fill": "#50B747",
     "color": "#FFFFFF"
   },
   {
@@ -183,21 +183,21 @@
     "id": 19,
     "municipio": "tumbalá",
     "nombre": "Griselda de Jesús Méndez",
-    "partido": "Morena",
-    "logo": "img/partidos/morena.png",
+    "partido": "Partido Verde Ecologista de México",
+    "logo": "img/partidos/pvem.png",
     "foto": "img/profile/griselda_de_jesus_mendez.jpeg",
-    "fill": "#4A1B1B",
+    "fill": "#50B747",
     "color": "#FFFFFF"
   },
   {
     "id": 20,
     "municipio": "tuzantán",
     "nombre": "Grissel Vázquez Zambrano",
-    "partido": "Morena",
-    "logo": "img/partidos/morena.png",
+    "partido": "Partido del Trabajo",
+    "logo": "img/partidos/pt.png",
     "foto": "img/profile/grissel_vazquez_zambrano.jpeg",
-    "fill": "#4A1B1B",
-    "color": "#FFFFFF"
+    "fill": "#E41B25",
+    "color": "#F7E802"
   },
   {
     "id": 21,
