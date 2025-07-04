@@ -16,7 +16,7 @@ Cada objeto en el array de *candidatas.json* sigue esta plantilla:
   "partido": "Morena", //partido politico
   "logo": "img/partidos/morena.png", //logo disponible en img/partidos/
   "foto": "img/presidenta.jpg", //foto de la pesona
-  "fill": "#4A1B1B", //color del partido 1
+  "fill": "#4A1B1B", //color del partido
   "color": "#FFFFFF" //color de relleno del partido
 }
 ```
